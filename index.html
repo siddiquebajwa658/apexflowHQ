@@ -1,118 +1,736 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>ApexFlow HQ – Growth & Automation Agency</title>
-<style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0f172a;
-  color: #fff;
-}
-.container {
-  max-width: 900px;
-  margin: auto;
-  padding: 30px 20px;
-}
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.logo {
-  font-size: 22px;
-  font-weight: bold;
-}
-.btn {
-  background: #6366f1;
-  padding: 10px 16px;
-  border: none;
-  border-radius: 6px;
-  color: white;
-  cursor: pointer;
-}
-.hero {
-  margin-top: 40px;
-}
-.hero h1 {
-  font-size: 38px;
-  line-height: 1.2;
-}
-.hero p {
-  font-size: 16px;
-  color: #cbd5e1;
-  margin-bottom: 20px;
-}
-.section {
-  margin-top: 50px;
-}
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-  gap: 20px;
-}
-.card {
-  border: 1px solid #334155;
-  padding: 16px;
-  border-radius: 10px;
-  background: #1e293b;
-}
-footer {
-  margin-top: 40px;
-  text-align: center;
-  color: #94a3b8;
-  font-size: 13px;
-}
-input, textarea {
-  width: 100%;
-  padding: 10px;
-  margin-top: 4px;
-  margin-bottom: 12px;
-  background: #0f172a;
-  border: 1px solid #334155;
-  border-radius: 6px;
-  color: white;
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ApexFlow HQ – Growth & Automation Agency</title>
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-soft: #0f172a;
+      --card: #020617;
+      --accent: #6366f1;
+      --accent-2: #06b6d4;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --border: #1e293b;
+      --radius: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #0b1120 0, #020617 55%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 16px 14px 40px;
+    }
+
+    /* HEADER */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 20% 0, #a855f7, #2563eb);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 700;
+      box-shadow: 0 10px 30px rgba(79, 70, 229, 0.7);
+    }
+
+    .brand-text-main {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .brand-text-sub {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .header-cta-btn {
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: radial-gradient(circle at top left, #4f46e5, #0f172a);
+      color: #f9fafb;
+      font-size: 12px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
+      gap: 22px;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--muted);
+      font-size: 11px;
+      margin-bottom: 8px;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.25);
+    }
+
+    .hero-title {
+      font-size: clamp(24px, 6vw, 36px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+    }
+
+    .hero-title span {
+      background: linear-gradient(120deg, #a855f7, #22d3ee);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-sub {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 18px;
+      max-width: 520px;
+    }
+
+    .hero-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .metric {
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.95);
+      font-size: 11px;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .metric strong {
+      color: #e5e7eb;
+      font-size: 12px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .btn-primary {
+      padding: 9px 16px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      font-size: 13px;
+      color: #f9fafb;
+    }
+
+    .btn-secondary {
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.9);
+      font-size: 12px;
+      color: var(--muted);
+      cursor: pointer;
+    }
+
+    .hero-note {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* Hero card right */
+    .hero-card {
+      border-radius: 18px;
+      padding: 14px 14px 12px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      background: radial-gradient(circle at top, #111827, #020617 60%);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+      font-size: 11px;
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .hero-card-title {
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .hero-card-sub {
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    .status-pill {
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.12);
+      border: 1px solid rgba(34, 197, 94, 0.6);
+      color: #bbf7d0;
+      font-size: 10px;
+    }
+
+    .hero-card-body {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .pipeline {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .pipe-col {
+      padding: 7px;
+      border-radius: 10px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      background: rgba(15, 23, 42, 0.95);
+    }
+
+    .pipe-col h4 {
+      font-size: 10px;
+      margin-bottom: 4px;
+      color: #e5e7eb;
+    }
+
+    .tag {
+      display: inline-flex;
+      padding: 2px 6px;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      font-size: 9px;
+      color: var(--muted);
+      margin: 0 3px 3px 0;
+    }
+
+    .hero-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    .sparkline {
+      width: 80px;
+      height: 22px;
+      border-radius: 999px;
+      background: linear-gradient(
+        90deg,
+        rgba(56, 189, 248, 0.18),
+        rgba(129, 140, 248, 0.5)
+      );
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sparkline::after {
+      content: "";
+      position: absolute;
+      inset: 5px 8px;
+      border-radius: inherit;
+      border-bottom: 2px solid #38bdf8;
+      border-right: 2px solid #38bdf8;
+      transform: skewX(-16deg);
+    }
+
+    /* SERVICES SECTION */
+    .section {
+      margin-top: 30px;
+      padding: 18px 14px 18px;
+      border-radius: 18px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid var(--border);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: flex-end;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .section-sub {
+      font-size: 12px;
+      color: var(--muted);
+      max-width: 360px;
+    }
+
+    .section-badge {
+      font-size: 11px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      background: rgba(2, 6, 23, 0.9);
+      white-space: nowrap;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 12px;
+    }
+
+    .card {
+      padding: 12px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: radial-gradient(circle at top left, #111827, #020617 60%);
+      font-size: 12px;
+    }
+
+    .card h3 {
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .card p {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 10px;
+      padding: 2px 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      color: var(--muted);
+    }
+
+    .chip span {
+      color: #e5e7eb;
+      font-size: 11px;
+    }
+
+    /* CONTACT */
+    .contact {
+      margin-top: 26px;
+      padding: 18px 14px 18px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: linear-gradient(
+        135deg,
+        rgba(79, 70, 229, 0.2),
+        rgba(15, 23, 42, 0.98)
+      );
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.3fr);
+      gap: 18px;
+    }
+
+    .contact h2 {
+      font-size: 17px;
+      margin-bottom: 4px;
+    }
+
+    .contact p {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .contact-list {
+      font-size: 11px;
+      color: var(--text);
+    }
+
+    .contact-list div {
+      margin-bottom: 4px;
+    }
+
+    .contact-list span {
+      color: var(--muted);
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 8px;
+      font-size: 11px;
+    }
+
+    .contact-form label {
+      color: var(--muted);
+    }
+
+    .field {
+      margin-bottom: 4px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      margin-top: 4px;
+      padding: 7px 9px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.97);
+      color: var(--text);
+      font-size: 12px;
+    }
+
+    textarea {
+      min-height: 70px;
+      resize: vertical;
+    }
+
+    .footer {
+      margin-top: 22px;
+      text-align: center;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* RESPONSIVE BREAKPOINTS */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .header-cta-btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        order: -1; /* card top on mobile */
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+      }
+
+      .contact {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page {
+        padding-inline: 10px;
+      }
+      .section,
+      .contact {
+        padding-inline: 10px;
+      }
+    }
+  </style>
 </head>
 <body>
-<div class="container">
+  <div class="page">
+    <!-- HEADER -->
+    <header>
+      <div class="brand">
+        <div class="brand-logo">A</div>
+        <div>
+          <div class="brand-text-main">ApexFlow HQ</div>
+          <div class="brand-text-sub">Inbox-first outbound & growth</div>
+        </div>
+      </div>
+      <button
+        class="header-cta-btn"
+        onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"
+      >
+        Book a free outbound audit
+      </button>
+    </header>
 
-<header>
-  <div class="logo">ApexFlow HQ</div>
-  <button class="btn" onclick="location.href='#contact'">Book a Call</button>
-</header>
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <div class="badge">
+          <div class="badge-dot"></div>
+          <span>Accepting 1–2 new clients this month</span>
+        </div>
 
-<section class="hero">
-  <h1>We Build Predictable Sales Pipelines</h1>
-  <p>Done-for-you cold outreach + automation for agencies & SaaS founders.</p>
-  <button class="btn" onclick="location.href='mailto:siddique@apexflowhq.tech'">Email Us</button>
-</section>
+        <h1 class="hero-title">
+          We build <span>predictable pipelines</span> for agencies & SaaS.
+        </h1>
 
-<section class="section">
-  <h2>Services</h2>
-  <div class="grid">
-    <div class="card">Lead Research & Targeting</div>
-    <div class="card">Cold Email & Deliverability</div>
-    <div class="card">CRM & Automation Setup</div>
-    <div class="card">Reporting & Optimization</div>
+        <p class="hero-sub">
+          Done-for-you cold email systems that get you consistent, qualified
+          meetings without hiring a full sales team or playing with deliverability
+          on your own.
+        </p>
+
+        <div class="hero-metrics">
+          <div class="metric">
+            <strong>3–7x</strong>
+            <span>pipeline growth from outbound</span>
+          </div>
+          <div class="metric">
+            <strong>100+</strong>
+            <span>meetings booked across B2B offers</span>
+          </div>
+          <div class="metric">
+            <strong>Inbox-first</strong>
+            <span>strategy, tech & sending</span>
+          </div>
+        </div>
+
+        <div class="hero-actions">
+          <button
+            class="btn-primary"
+            onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"
+          >
+            Get a free strategy breakdown →
+          </button>
+          <button
+            class="btn-secondary"
+            onclick="location.href='mailto:siddique@apexflowhq.tech?subject=Project%20inquiry'"
+          >
+            Email us directly
+          </button>
+        </div>
+
+        <div class="hero-note">
+          No long-term retainers. We partner with a small number of clients and
+          focus on results, not vanity metrics.
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-label="Sample pipeline view">
+        <div class="hero-card-header">
+          <div>
+            <div class="hero-card-title">Live outbound snapshot</div>
+            <div class="hero-card-sub">
+              Example metrics from a recent B2B campaign.
+            </div>
+          </div>
+          <div class="status-pill">Inbox placement: 87%</div>
+        </div>
+
+        <div class="hero-card-body">
+          We plug into your offer, define your ICP and build cold email flows
+          that land in the inbox — not the spam folder.
+        </div>
+
+        <div class="pipeline">
+          <div class="pipe-col">
+            <h4>Prospects</h4>
+            <div class="tag">Clean lists</div>
+            <div class="tag">Right titles</div>
+          </div>
+          <div class="pipe-col">
+            <h4>Outreach</h4>
+            <div class="tag">Personalised copy</div>
+            <div class="tag">Smart follow ups</div>
+          </div>
+          <div class="pipe-col">
+            <h4>Pipeline</h4>
+            <div class="tag">Booked calls</div>
+            <div class="tag">Simple reporting</div>
+          </div>
+        </div>
+
+        <div class="hero-card-footer">
+          <div>
+            <div style="color:#e5e7eb;">Campaign performance</div>
+            <div>Open 71% · Reply 18% · Meetings 9%</div>
+          </div>
+          <div class="sparkline" aria-hidden="true"></div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section" id="services">
+      <div class="section-header">
+        <div>
+          <div class="section-title">What we do for you</div>
+          <div class="section-sub">
+            End-to-end outbound: from offer and ICP clarity to research, copy,
+            sending and reporting. You focus on calls, we handle the pipeline.
+          </div>
+        </div>
+        <div class="section-badge">Built for B2B founders & agencies</div>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <h3>Offer & ICP clarity</h3>
+          <p>
+            We define who you should talk to and craft a clear, no-fluff
+            offer that cuts through the noise in your niche.
+          </p>
+          <div class="chip"><span>01</span> positioning & messaging</div>
+        </article>
+
+        <article class="card">
+          <h3>Lead research & lists</h3>
+          <p>
+            Verified B2B contacts with the right company size, tech stack and
+            decision-makers that can actually say “yes”.
+          </p>
+          <div class="chip"><span>02</span> hand-built target lists</div>
+        </article>
+
+        <article class="card">
+          <h3>Cold email systems</h3>
+          <p>
+            Multi-step campaigns, personalisation, warm-up and deliverability
+            baked in so your emails reliably hit the inbox.
+          </p>
+          <div class="chip"><span>03</span> inbox-first flows</div>
+        </article>
+
+        <article class="card">
+          <h3>Tracking & optimisation</h3>
+          <p>
+            Simple dashboards and weekly insights so you always know what’s
+            working: opens, replies, meetings and deals.
+          </p>
+          <div class="chip"><span>04</span> clear numbers</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+      <div>
+        <h2>Tell us about your pipeline goals</h2>
+        <p>
+          Share a bit about your offer and target market. We’ll reply with an
+          honest assessment and a simple game plan. No spam, no pressure.
+        </p>
+        <div class="contact-list">
+          <div><span>Email:</span> siddique@apexflowhq.tech</div>
+          <div><span>Ideal clients:</span> agencies, SaaS & service businesses</div>
+          <div><span>Availability:</span> limited new slots each month</div>
+        </div>
+      </div>
+
+      <form
+        class="contact-form"
+        onsubmit="window.location.href=`mailto:siddique@apexflowhq.tech?subject=${encodeURIComponent('Project inquiry from website')}&body=${encodeURIComponent('Name: '+this.name.value+'\nCompany: '+this.company.value+'\nWebsite: '+this.website.value+'\n\nProject details:\n'+this.details.value)}`; return false;"
+      >
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" name="name" placeholder="Your name" required />
+        </div>
+        <div class="field">
+          <label for="company">Company</label>
+          <input
+            id="company"
+            name="company"
+            placeholder="Your company (optional)"
+          />
+        </div>
+        <div class="field">
+          <label for="website">Website</label>
+          <input
+            id="website"
+            name="website"
+            placeholder="yourwebsite.com (optional)"
+          />
+        </div>
+        <div class="field">
+          <label for="details">What are you trying to achieve?</label>
+          <textarea
+            id="details"
+            name="details"
+            placeholder="Tell us about your offer, niche and current lead flow."
+          ></textarea>
+        </div>
+        <button class="btn-primary" type="submit">
+          Send details via email
+        </button>
+      </form>
+    </section>
+
+    <div class="footer">
+      © <span id="year"></span> ApexFlow HQ · Inbox-first outbound systems.
+    </div>
   </div>
-</section>
 
-<section class="section" id="contact">
-  <h2>Contact Us</h2>
-  <form onsubmit="window.location.href=`mailto:siddique@apexflowhq.tech?subject=Website%20Inquiry&body=${document.getElementById('msg').value}`; return false;">
-    <textarea id="msg" placeholder="Tell us about your project..."></textarea>
-    <button class="btn" type="submit">Send Message</button>
-  </form>
-</section>
-
-<footer>
-  © 2025 ApexFlow HQ – Inbox-First Growth Systems
-</footer>
-
-</div>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
